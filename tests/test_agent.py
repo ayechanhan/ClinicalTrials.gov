@@ -17,8 +17,16 @@ from app.schemas import IntentClass, VizType
 client = TestClient(app)
 
 
-def _study(nct: str, title: str) -> dict:
-    return {"protocolSection": {"identificationModule": {"nctId": nct, "briefTitle": title}}}
+def _study(nct: str, title: str, *, date: str | None = None,
+           phases: list[str] | None = None, status: str | None = None) -> dict:
+    ps: dict = {"identificationModule": {"nctId": nct, "briefTitle": title}}
+    if date:
+        ps["statusModule"] = {"startDateStruct": {"date": date}}
+    if status:
+        ps.setdefault("statusModule", {})["overallStatus"] = status
+    if phases:
+        ps["designModule"] = {"phases": phases}
+    return {"protocolSection": ps}
 
 
 def _params(**overrides) -> ExtractedParams:
@@ -58,8 +66,8 @@ def test_assemble_time_series() -> None:
                  drug_name="Pembrolizumab", start_year=2015, end_year=2016)
     result = FetchResult(
         buckets=[
-            Bucket(key=2016, label="2016", count=5, sample_studies=[_study("NCT2", "B")]),
-            Bucket(key=2015, label="2015", count=2, sample_studies=[_study("NCT1", "A")]),
+            Bucket(key=2016, label="2016", count=5, sample_studies=[_study("NCT2", "B", date="2016-05")]),
+            Bucket(key=2015, label="2015", count=2, sample_studies=[_study("NCT1", "A", date="2015-03")]),
         ],
         total_trials=7, group_by="year",
     )
@@ -73,6 +81,8 @@ def test_assemble_time_series() -> None:
     # Every data point carries citations with nct_id + excerpt.
     for d in viz["data"]:
         assert d["citations"] and all({"nct_id", "excerpt"} <= set(c) for c in d["citations"])
+    # Deep citation: excerpt carries the exact field value tying the study to its bucket.
+    assert "Start date: 2015-03" in viz["data"][0]["citations"][0]["excerpt"]
     assert body["meta"]["total_trials_fetched"] == 7
 
 
@@ -80,8 +90,10 @@ def test_assemble_bar_chart_sorted_desc_drops_empty() -> None:
     plan = _plan(IntentClass.DISTRIBUTION, VizType.BAR_CHART, "phase", condition="lung cancer")
     result = FetchResult(
         buckets=[
-            Bucket(key="PHASE2", label="Phase 2", count=10, sample_studies=[_study("NCT2", "B")]),
-            Bucket(key="PHASE3", label="Phase 3", count=25, sample_studies=[_study("NCT3", "C")]),
+            Bucket(key="PHASE2", label="Phase 2", count=10,
+                   sample_studies=[_study("NCT2", "B", phases=["PHASE2"])]),
+            Bucket(key="PHASE3", label="Phase 3", count=25,
+                   sample_studies=[_study("NCT3", "C", phases=["PHASE3"])]),
         ],
         total_trials=35, group_by="phase",
     )
@@ -89,6 +101,8 @@ def test_assemble_bar_chart_sorted_desc_drops_empty() -> None:
     assert viz["type"] == "bar_chart"
     # Sorted by count descending.
     assert [(d["phase"], d["trial_count"]) for d in viz["data"]] == [("Phase 3", 25), ("Phase 2", 10)]
+    # Deep citation carries the exact phase value.
+    assert "Phase: PHASE3" in viz["data"][0]["citations"][0]["excerpt"]
 
 
 def test_assemble_grouped_bar_has_series() -> None:
