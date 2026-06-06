@@ -1,0 +1,26 @@
+# Secrets / environment
+.env
+
+# Assignment instructions (internal — not part of the submission)
+CLAUDE.md
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+
+# Virtual environments
+.venv/
+venv/
+
+# Packaging / submission
+submission.zip
+
+# OS / editor cruft
+.DS_Store
+
+# Local Claude Code agent settings (personal, not project config)
+.claude/settings.local.json
