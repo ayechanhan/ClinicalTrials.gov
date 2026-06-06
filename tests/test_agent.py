@@ -107,3 +107,27 @@ def test_assemble_grouped_bar_has_series() -> None:
     assert viz["type"] == "grouped_bar"
     assert viz["encoding"]["series"] == "series"
     assert {d["series"] for d in viz["data"]} == {"Pembrolizumab", "Nivolumab"}
+
+
+def test_assemble_network() -> None:
+    plan = _plan(IntentClass.NETWORK, VizType.NETWORK_GRAPH, "sponsor_drug", condition="breast cancer")
+    result = FetchResult(
+        buckets=[], total_trials=100, group_by="sponsor_drug",
+        nodes=[
+            {"id": "sponsor:Merck", "label": "Merck", "type": "sponsor"},
+            {"id": "drug:Pembrolizumab", "label": "Pembrolizumab", "type": "drug"},
+        ],
+        edges=[{
+            "source": "sponsor:Merck", "target": "drug:Pembrolizumab", "weight": 7,
+            "citations": [{"nct_id": "NCT1", "excerpt": "A breast cancer trial"}],
+        }],
+    )
+    viz = assemble(plan, result).model_dump(mode="json")["visualization"]
+    assert viz["type"] == "network_graph"
+    assert viz["encoding"]["nodes"] == "nodes" and viz["encoding"]["edges"] == "edges"
+    graph = viz["data"][0]
+    assert len(graph["nodes"]) == 2 and len(graph["edges"]) == 1
+    # Per-edge citations (the studies that created the link) are preserved...
+    assert graph["edges"][0]["citations"][0]["nct_id"] == "NCT1"
+    # ...and the container DataPoint still carries citations (the contract).
+    assert graph["citations"][0]["nct_id"] == "NCT1"

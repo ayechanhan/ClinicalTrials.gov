@@ -35,6 +35,9 @@ def _title(plan: QueryPlan, result: FetchResult) -> str:
         versus = " vs ".join(p.comparison_items) if p.comparison_items else "comparison"
         context = f" for {p.condition}" if p.condition else ""
         return f"Trials by {result.group_by}: {versus}{context}"
+    if plan.viz_type == VizType.NETWORK_GRAPH:
+        subject = _cap((p.condition or p.drug_name or "clinical trial").strip())
+        return f"Sponsor-drug network for {subject} trials"
     if plan.viz_type == VizType.BAR_CHART:
         subject = _cap((p.condition or p.drug_name or "Clinical trial").strip())
         return f"{subject} trials by {result.group_by}"
@@ -49,7 +52,7 @@ def _interpretation(plan: QueryPlan, result: FetchResult) -> str:
         bits.append(f"about {subject}")
     if p.status:
         bits.append(f"filtered to status {p.status}")
-    bits.append(f"grouped by {result.group_by}")
+    bits.append(f"grouped by {result.group_by.replace('_', ' ')}")
     return ", ".join(bits) + "."
 
 

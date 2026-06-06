@@ -75,10 +75,43 @@ def _grouped_bar(result: FetchResult) -> tuple[list[DataPoint], Encoding]:
     return points, encoding
 
 
+def _network(result: FetchResult) -> tuple[list[DataPoint], Encoding]:
+    """Shape a sponsor<->drug graph into a single container DataPoint.
+
+    The whole graph is one data row exposing ``nodes`` and ``edges`` arrays (named
+    by the encoding); each edge carries its own citations (the studies that created
+    that link). The container's typed ``citations`` hold a deduped representative
+    sample so the per-DataPoint citation contract still holds.
+    """
+    nodes = result.nodes or []
+    edges = result.edges or []
+
+    seen: set[str] = set()
+    representative: list[Citation] = []
+    for edge in edges:
+        for cite in edge.get("citations", []):
+            if cite["nct_id"] not in seen:
+                seen.add(cite["nct_id"])
+                representative.append(Citation(nct_id=cite["nct_id"], excerpt=cite["excerpt"]))
+            if len(representative) >= MAX_CITATIONS:
+                break
+        if len(representative) >= MAX_CITATIONS:
+            break
+
+    container = DataPoint(
+        nodes=nodes, edges=edges,
+        node_count=len(nodes), edge_count=len(edges),
+        citations=representative,
+    )
+    encoding = Encoding(nodes="nodes", edges="edges")
+    return [container], encoding
+
+
 _SHAPERS = {
     VizType.TIME_SERIES: _time_series,
     VizType.BAR_CHART: _bar_chart,
     VizType.GROUPED_BAR: _grouped_bar,
+    VizType.NETWORK_GRAPH: _network,
 }
 
 
