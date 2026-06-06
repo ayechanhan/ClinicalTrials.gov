@@ -1,24 +1,23 @@
+"""FastAPI application: natural-language query -> visualization specification.
+
+Pipeline (POST /query)::
+
+    QueryRequest
+      -> planner.plan_query    (LLM, structured output: intent / viz / params / strategy)
+      -> tools.fetch_for_plan  (deterministic CT.gov count-per-bucket fetch)
+      -> assembler.assemble    (deterministic: buckets -> typed VisualizationResponse)
+
+The planner only sees the query text; all numbers come from the real API and are
+aggregated deterministically — nothing in the data path is model-generated.
 """
-FastAPI application exposing the ClinicalTrials.gov Query-to-Visualization API.
 
-Step 1 scaffold: a single ``POST /query`` endpoint that returns a hardcoded
-example ``VisualizationResponse``. The real planner -> fetcher -> assembler
-pipeline is wired up in later steps; the response shape here is the contract
-those steps will fill with live data.
-"""
+from fastapi import FastAPI, HTTPException
 
-from fastapi import FastAPI
-
-from app.schemas import (
-    Citation,
-    DataPoint,
-    Encoding,
-    QueryRequest,
-    ResponseMeta,
-    VisualizationResponse,
-    VisualizationSpec,
-    VizType,
-)
+from app.agent.assembler import assemble
+from app.agent.planner import PlannerError, plan_query
+from app.agent.tools import FetchError, fetch_for_plan
+from app.ct_client.client import ClinicalTrialsClient, CTClientError
+from app.schemas import QueryRequest, VisualizationResponse
 
 app = FastAPI(
     title="ClinicalTrials.gov Query-to-Visualization Agent",
@@ -27,7 +26,7 @@ app = FastAPI(
         "visualization specification backed by real ClinicalTrials.gov data, with "
         "per-data-point citations."
     ),
-    version="0.1.0",
+    version="0.2.0",
 )
 
 
@@ -36,7 +35,7 @@ def root() -> dict:
     """Service banner with a pointer to the interactive docs."""
     return {
         "service": "ClinicalTrials.gov Query-to-Visualization Agent",
-        "version": "0.1.0",
+        "version": "0.2.0",
         "docs": "/docs",
         "query_endpoint": "POST /query",
     }
@@ -48,66 +47,27 @@ def health() -> dict:
     return {"status": "ok"}
 
 
-def _stub_response() -> VisualizationResponse:
-    """Hardcoded example response (Step 1 placeholder).
-
-    Demonstrates the full output contract — including per-data-point citations —
-    using the canonical time-trend query. Replaced by the live pipeline in Step 4.
-    """
-    data = [
-        DataPoint(
-            year=2015,
-            trial_count=2,
-            citations=[
-                Citation(nct_id="NCT02345678", excerpt="Start Date: 2015-03"),
-                Citation(nct_id="NCT02360001", excerpt="Start Date: 2015-09"),
-            ],
-        ),
-        DataPoint(
-            year=2016,
-            trial_count=5,
-            citations=[Citation(nct_id="NCT02712983", excerpt="Start Date: 2016-01")],
-        ),
-        DataPoint(
-            year=2017,
-            trial_count=9,
-            citations=[Citation(nct_id="NCT03012345", excerpt="Start Date: 2017-06")],
-        ),
-        DataPoint(
-            year=2018,
-            trial_count=14,
-            citations=[Citation(nct_id="NCT03456789", excerpt="Start Date: 2018-02")],
-        ),
-    ]
-    spec = VisualizationSpec(
-        type=VizType.TIME_SERIES,
-        title="Pembrolizumab trials started per year (2015-2018)",
-        encoding=Encoding(
-            x={"field": "year", "type": "temporal"},
-            y={"field": "trial_count", "type": "quantitative"},
-        ),
-        data=data,
-    )
-    meta = ResponseMeta(
-        filters={"drug_name": "Pembrolizumab", "start_year": 2015},
-        query_interpretation=(
-            "Count Pembrolizumab trials by start year since 2015 and show the trend over time."
-        ),
-        total_trials_fetched=30,
-        notes="STUB RESPONSE — hardcoded example data. The live CT.gov pipeline is wired in Step 4.",
-    )
-    return VisualizationResponse(visualization=spec, meta=meta)
-
-
 @app.post("/query", response_model=VisualizationResponse, tags=["query"])
-def query(request: QueryRequest) -> VisualizationResponse:
-    """Accept a natural-language query and return a visualization specification.
+async def query(request: QueryRequest) -> VisualizationResponse:
+    """Plan -> fetch -> assemble a visualization spec for a natural-language query.
 
-    Step 1: returns a hardcoded example regardless of input. The request body is
-    still parsed and validated against ``QueryRequest``, so the input half of the
-    contract is exercised end-to-end.
+    Error handling here is intentionally light; the hardening step adds retries,
+    input validation, and richer error bodies.
     """
-    return _stub_response()
+    try:
+        plan = await plan_query(request)
+    except PlannerError as exc:
+        raise HTTPException(status_code=502, detail=f"Query planning failed: {exc}") from exc
+
+    try:
+        async with ClinicalTrialsClient() as ct:
+            result = await fetch_for_plan(plan, ct)
+    except FetchError as exc:
+        raise HTTPException(status_code=422, detail=str(exc)) from exc
+    except CTClientError as exc:
+        raise HTTPException(status_code=502, detail=str(exc)) from exc
+
+    return assemble(plan, result)
 
 
 if __name__ == "__main__":
