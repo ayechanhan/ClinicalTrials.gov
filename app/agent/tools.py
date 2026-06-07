@@ -150,7 +150,8 @@ def _base_kwargs(params: ExtractedParams) -> tuple[dict[str, Any], list[str]]:
     if params.phase:
         clauses.append(f"AREA[Phase]{params.phase}")
     if params.country:
-        clauses.append(f'AREA[LocationCountry]"{params.country}"')
+        safe_country = params.country.replace('"', "")  # keep the Essie string literal intact
+        clauses.append(f'AREA[LocationCountry]"{safe_country}"')
     return kwargs, clauses
 
 

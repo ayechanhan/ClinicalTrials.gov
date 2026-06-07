@@ -193,6 +193,15 @@ def test_ct_error_maps_to_502(monkeypatch) -> None:
     assert client.post("/query", json={"query": "x"}).status_code == 502
 
 
+def test_viz_guard_coerces_unrendered_types() -> None:
+    from app.agent.planner import _guard_viz_type
+    # histogram/scatter aren't rendered yet -> coerce to the intent's default.
+    assert _guard_viz_type(IntentClass.DISTRIBUTION, VizType.HISTOGRAM) == VizType.BAR_CHART
+    assert _guard_viz_type(IntentClass.GEOGRAPHIC, VizType.SCATTER) == VizType.BAR_CHART
+    # a sensible choice is kept as-is.
+    assert _guard_viz_type(IntentClass.TIME_TREND, VizType.TIME_SERIES) == VizType.TIME_SERIES
+
+
 def test_fetch_error_maps_to_422(monkeypatch) -> None:
     async def ok_plan(*_a, **_k):
         return _plan(IntentClass.TIME_TREND, VizType.TIME_SERIES, "year")

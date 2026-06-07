@@ -103,13 +103,14 @@ INTENT_DEFAULT_VIZ: dict[IntentClass, VizType] = {
     IntentClass.NETWORK: VizType.NETWORK_GRAPH,
 }
 
-# Default + documented fallback per intent. A viz outside this set is coerced
-# to the intent's default.
+# Viz types we actually render, per intent. Anything else — including the
+# not-yet-rendered histogram/scatter (kept in the contract for future use) — is
+# coerced to the intent's default, so the pipeline never emits a spec it cannot build.
 INTENT_COMPATIBLE_VIZ: dict[IntentClass, set[VizType]] = {
     IntentClass.TIME_TREND: {VizType.TIME_SERIES, VizType.BAR_CHART},
-    IntentClass.DISTRIBUTION: {VizType.BAR_CHART, VizType.HISTOGRAM},
+    IntentClass.DISTRIBUTION: {VizType.BAR_CHART},
     IntentClass.COMPARISON: {VizType.GROUPED_BAR, VizType.BAR_CHART},
-    IntentClass.GEOGRAPHIC: {VizType.BAR_CHART, VizType.SCATTER},
+    IntentClass.GEOGRAPHIC: {VizType.BAR_CHART},
     IntentClass.NETWORK: {VizType.NETWORK_GRAPH, VizType.BAR_CHART},
 }
 
@@ -127,12 +128,12 @@ Do all of the following:
    - geographic   : by country / location
    - network      : relationships between entities (sponsors<->drugs, drugs<->conditions)
 
-2) Choose viz_type. Prefer this mapping (intent -> default, fallback):
-   - time_trend   -> time_series   (fallback bar_chart)
-   - distribution -> bar_chart     (fallback histogram)
-   - comparison   -> grouped_bar   (fallback bar_chart)
-   - geographic   -> bar_chart     (fallback scatter)
-   - network      -> network_graph (fallback bar_chart)
+2) Choose viz_type (all of these are supported):
+   - time_trend   -> time_series   (or bar_chart)
+   - distribution -> bar_chart
+   - comparison   -> grouped_bar   (or bar_chart)
+   - geographic   -> bar_chart
+   - network      -> network_graph
 
 3) Extract entities into extracted_params. Use null for anything not stated. Do NOT invent.
    - Normalize phase to the API enum: "phase 3" / "phase III" -> "PHASE3"; also EARLY_PHASE1.
