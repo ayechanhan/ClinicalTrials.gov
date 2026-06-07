@@ -205,6 +205,36 @@ default. `histogram`/`scatter` are defined in the contract and slot in the same 
 
 ---
 
+## Integrity note — AI tools & engineering judgment
+
+**Tools.** Built with **Claude Code as a pair programmer**: I drove the design decisions; Claude
+scaffolded the boilerplate and drafted implementations under that direction.
+
+**Workflow.** We planned the full system first (architecture, schemas, pipeline, the intent→viz
+mapping), then built it **one step at a time** — scaffold → CT client → planner → core charts →
+network/geographic → deep citations → hardening → examples/README → demo UI. After each step I
+ran it locally and tested against the live APIs before committing and pushing, so every commit is
+a working, reviewed increment (the git history reflects this).
+
+**How I validated correctness.** Probed the live ClinicalTrials.gov API to confirm real request
+params and response shapes *before* coding against them; cross-checked aggregated counts against
+direct API queries (e.g. lung-cancer Phase 3 = 1,369); and kept an offline `pytest` suite (15
+tests) covering the deterministic core, input validation, and error→status mapping.
+
+**Deliberate vs generated/adapted.** The *design* is mine and intentional — count-per-bucket
+exact counts, the single-LLM-call (interpret-only) split with a fully deterministic data path,
+per-data-point deep citations, and the sample-then-exact-count geographic strategy. Claude
+generated and adapted the *code* that implements those decisions (FastAPI wiring, the httpx
+client, Pydantic models, the demo page).
+
+**Design reasoning (short).** Keep the model on interpretation, never on data — so there is
+nothing for it to hallucinate; compute every number from the real API; and make each data point
+traceable back to its source trials. The hardening (pagination caps, one planner retry,
+validation, surfaced upstream errors) follows from treating a live external API as something that
+will be large, partial, and occasionally fail.
+
+---
+
 ## Limitations
 
 - **Drug-name normalization.** Network drug nodes come from CT.gov's free-text intervention field,
