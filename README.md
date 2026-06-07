@@ -96,6 +96,8 @@ With the server running, open **http://127.0.0.1:8000/demo** for a single-page U
 `POST /query` and renders every chart type (Chart.js for line/bar/grouped, vis-network for the
 graph) with clickable citations — a quick way to see the spec rendered without building a frontend.
 
+📹 **Demo recording:** [watch a short walkthrough](https://drive.google.com/file/d/1ycTB-fiaZjLqq9kBKdGkGm18HNqb9hMv/view?usp=sharing).
+
 ---
 
 ## API
