@@ -202,6 +202,9 @@ def _merge_overrides(params: ExtractedParams, request: QueryRequest) -> Extracte
     return params.model_copy(update={k: v for k, v in overrides.items() if v is not None})
 
 
+PLANNER_ATTEMPTS = 2  # initial attempt + one retry on transient failure
+
+
 async def plan_query(
     request: QueryRequest,
     *,
@@ -210,32 +213,40 @@ async def plan_query(
 ) -> QueryPlan:
     """Interpret ``request.query`` into a structured ``QueryPlan``.
 
-    Raises ``PlannerError`` on API failure, refusal, or empty parse.
+    Retries once on a transient LLM failure (API error or empty parse); a refusal
+    is surfaced immediately. Raises ``PlannerError`` if no usable plan is produced
+    (the API layer maps that to HTTP 500).
     """
     client = client or _get_client()
     model = model or get_settings().openai_model
+    messages = [
+        {"role": "system", "content": _build_system_prompt()},
+        {"role": "user", "content": request.query},
+    ]
 
-    try:
-        completion = await client.beta.chat.completions.parse(
-            model=model,
-            temperature=0,
-            messages=[
-                {"role": "system", "content": _build_system_prompt()},
-                {"role": "user", "content": request.query},
-            ],
-            response_format=QueryPlan,
-        )
-    except OpenAIError as exc:
-        raise PlannerError(f"Planner LLM call failed: {exc}") from exc
+    last_error: Exception | None = None
+    for attempt in range(1, PLANNER_ATTEMPTS + 1):
+        try:
+            completion = await client.beta.chat.completions.parse(
+                model=model, temperature=0, messages=messages, response_format=QueryPlan,
+            )
+        except OpenAIError as exc:
+            last_error = exc
+            logger.warning("Planner API error (attempt %d/%d): %s", attempt, PLANNER_ATTEMPTS, exc)
+            continue
 
-    message = completion.choices[0].message
-    if getattr(message, "refusal", None):
-        raise PlannerError(f"Planner refused the request: {message.refusal}")
-    plan = message.parsed
-    if plan is None:
-        raise PlannerError("Planner returned no parsed plan.")
+        message = completion.choices[0].message
+        if getattr(message, "refusal", None):
+            raise PlannerError(f"Planner refused the request: {message.refusal}")
+        plan = message.parsed
+        if plan is None:
+            last_error = PlannerError("planner returned no parsed plan")
+            logger.warning("Planner empty parse (attempt %d/%d)", attempt, PLANNER_ATTEMPTS)
+            continue
 
-    # Deterministic post-processing: viz-type guard + request-override merge.
-    plan.viz_type = _guard_viz_type(plan.intent_class, plan.viz_type)
-    plan.extracted_params = _merge_overrides(plan.extracted_params, request)
-    return plan
+        # Deterministic post-processing: viz-type guard + request-override merge.
+        plan.viz_type = _guard_viz_type(plan.intent_class, plan.viz_type)
+        plan.extracted_params = _merge_overrides(plan.extracted_params, request)
+        return plan
+
+    raise PlannerError(f"Planner failed after {PLANNER_ATTEMPTS} attempts: {last_error}")

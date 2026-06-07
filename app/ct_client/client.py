@@ -43,6 +43,7 @@ logger = logging.getLogger(__name__)
 DEFAULT_BASE_URL = "https://clinicaltrials.gov/api/v2"
 DEFAULT_PAGE_SIZE = 100
 DEFAULT_MAX_PAGES = 10
+MAX_PAGES_CAP = 50  # safety ceiling on the configured page count
 API_MAX_PAGE_SIZE = 1000  # hard cap enforced by the API
 DEFAULT_TIMEOUT = 30.0
 
@@ -130,7 +131,7 @@ class ClinicalTrialsClient:
             if max_pages is not None
             else _env_int("CT_MAX_PAGES", DEFAULT_MAX_PAGES)
         )
-        self.max_pages = max(1, pages)
+        self.max_pages = max(1, min(pages, MAX_PAGES_CAP))
         self.timeout = timeout
         self._client = client
         self._owns_client = client is None

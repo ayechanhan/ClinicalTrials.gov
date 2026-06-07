@@ -57,7 +57,8 @@ async def query(request: QueryRequest) -> VisualizationResponse:
     try:
         plan = await plan_query(request)
     except PlannerError as exc:
-        raise HTTPException(status_code=502, detail=f"Query planning failed: {exc}") from exc
+        # Planner already retried once; a persistent failure is a server-side error.
+        raise HTTPException(status_code=500, detail=f"Query planning failed: {exc}") from exc
 
     try:
         async with ClinicalTrialsClient() as ct:

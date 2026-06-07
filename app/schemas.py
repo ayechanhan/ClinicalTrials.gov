@@ -19,9 +19,11 @@ Design notes
   the emitted spec are self-validating and self-documenting.
 """
 
+import re
+from datetime import date
 from enum import Enum
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 # --------------------------------------------------------------------------- #
@@ -51,6 +53,18 @@ class VizType(str, Enum):
 # --------------------------------------------------------------------------- #
 # Input
 # --------------------------------------------------------------------------- #
+# Accepted trial-phase inputs, normalized to the API's enum values.
+_PHASE_ALIASES = {
+    "PHASE1": "PHASE1", "1": "PHASE1",
+    "PHASE2": "PHASE2", "2": "PHASE2",
+    "PHASE3": "PHASE3", "3": "PHASE3",
+    "PHASE4": "PHASE4", "4": "PHASE4",
+    "EARLYPHASE1": "EARLY_PHASE1", "EARLY1": "EARLY_PHASE1",
+    "NA": "NA", "NOTAPPLICABLE": "NA",
+}
+_MIN_YEAR = 1900
+
+
 class QueryRequest(BaseModel):
     """A natural-language question plus optional structured overrides.
 
@@ -72,6 +86,43 @@ class QueryRequest(BaseModel):
     country: str | None = Field(default=None, description="Country filter override.")
     start_year: int | None = Field(default=None, description="Earliest study start year (inclusive).")
     end_year: int | None = Field(default=None, description="Latest study start year (inclusive).")
+
+    @field_validator("query")
+    @classmethod
+    def _query_not_empty(cls, value: str) -> str:
+        cleaned = value.strip()
+        if not cleaned:
+            raise ValueError("query must not be empty")
+        return cleaned
+
+    @field_validator("trial_phase")
+    @classmethod
+    def _normalize_phase(cls, value: str | None) -> str | None:
+        if value is None:
+            return None
+        normalized = _PHASE_ALIASES.get(re.sub(r"[\s_/]", "", value.upper()))
+        if normalized is None:
+            raise ValueError(
+                f"unknown trial_phase {value!r}; expected one of "
+                "PHASE1, PHASE2, PHASE3, PHASE4, EARLY_PHASE1, NA"
+            )
+        return normalized
+
+    @field_validator("start_year", "end_year")
+    @classmethod
+    def _year_in_range(cls, value: int | None) -> int | None:
+        if value is None:
+            return None
+        ceiling = date.today().year + 5
+        if not (_MIN_YEAR <= value <= ceiling):
+            raise ValueError(f"year {value} out of range [{_MIN_YEAR}, {ceiling}]")
+        return value
+
+    @model_validator(mode="after")
+    def _check_year_order(self) -> "QueryRequest":
+        if self.start_year is not None and self.end_year is not None and self.start_year > self.end_year:
+            raise ValueError(f"start_year ({self.start_year}) must be <= end_year ({self.end_year})")
+        return self
 
     model_config = ConfigDict(
         json_schema_extra={

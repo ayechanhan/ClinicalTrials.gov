@@ -8,11 +8,13 @@ End-to-end tests against the live APIs are run manually (see Step 4 demo).
 
 from fastapi.testclient import TestClient
 
+import app.main as main_module
 from app.agent.assembler import assemble
-from app.agent.planner import ApiEndpoint, ApiStrategy, ExtractedParams, QueryPlan
-from app.agent.tools import Bucket, FetchResult
+from app.agent.planner import ApiEndpoint, ApiStrategy, ExtractedParams, PlannerError, QueryPlan
+from app.agent.tools import Bucket, FetchError, FetchResult
+from app.ct_client.client import CTClientError
 from app.main import app
-from app.schemas import IntentClass, VizType
+from app.schemas import IntentClass, QueryRequest, VizType
 
 client = TestClient(app)
 
@@ -145,3 +147,59 @@ def test_assemble_network() -> None:
     assert graph["edges"][0]["citations"][0]["nct_id"] == "NCT1"
     # ...and the container DataPoint still carries citations (the contract).
     assert graph["citations"][0]["nct_id"] == "NCT1"
+
+
+# --------------------------------------------------------------------------- #
+# Input validation + error mapping (offline)
+# --------------------------------------------------------------------------- #
+def test_empty_query_rejected() -> None:
+    assert client.post("/query", json={"query": "   "}).status_code == 422
+
+
+def test_bad_year_range_rejected() -> None:
+    resp = client.post("/query", json={"query": "x", "start_year": 2020, "end_year": 2010})
+    assert resp.status_code == 422
+
+
+def test_out_of_range_year_rejected() -> None:
+    assert client.post("/query", json={"query": "x", "start_year": 1500}).status_code == 422
+
+
+def test_unknown_phase_rejected() -> None:
+    assert client.post("/query", json={"query": "x", "trial_phase": "PHASE9"}).status_code == 422
+
+
+def test_phase_normalized() -> None:
+    assert QueryRequest(query="x", trial_phase="phase 3").trial_phase == "PHASE3"
+    assert QueryRequest(query="x", trial_phase="early phase 1").trial_phase == "EARLY_PHASE1"
+
+
+def test_planner_error_maps_to_500(monkeypatch) -> None:
+    async def boom(*_a, **_k):
+        raise PlannerError("llm unavailable")
+    monkeypatch.setattr(main_module, "plan_query", boom)
+    assert client.post("/query", json={"query": "x"}).status_code == 500
+
+
+def test_ct_error_maps_to_502(monkeypatch) -> None:
+    async def ok_plan(*_a, **_k):
+        return _plan(IntentClass.TIME_TREND, VizType.TIME_SERIES, "year")
+
+    async def ct_down(*_a, **_k):
+        raise CTClientError("upstream timeout")
+
+    monkeypatch.setattr(main_module, "plan_query", ok_plan)
+    monkeypatch.setattr(main_module, "fetch_for_plan", ct_down)
+    assert client.post("/query", json={"query": "x"}).status_code == 502
+
+
+def test_fetch_error_maps_to_422(monkeypatch) -> None:
+    async def ok_plan(*_a, **_k):
+        return _plan(IntentClass.TIME_TREND, VizType.TIME_SERIES, "year")
+
+    async def unsupported(*_a, **_k):
+        raise FetchError("unsupported viz")
+
+    monkeypatch.setattr(main_module, "plan_query", ok_plan)
+    monkeypatch.setattr(main_module, "fetch_for_plan", unsupported)
+    assert client.post("/query", json={"query": "x"}).status_code == 422
