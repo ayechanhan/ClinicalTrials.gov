@@ -1,0 +1,780 @@
+{
+  "request": {
+    "query": "Show a network of sponsors and drugs for breast cancer trials."
+  },
+  "response": {
+    "visualization": {
+      "type": "network_graph",
+      "title": "Sponsor-drug network for Breast cancer trials",
+      "encoding": {
+        "x": null,
+        "y": null,
+        "series": null,
+        "nodes": "nodes",
+        "edges": "edges"
+      },
+      "data": [
+        {
+          "citations": [
+            {
+              "nct_id": "NCT01725386",
+              "excerpt": "An Observational Study of Xeloda (Capecitabine) in Participants With Metastatic or Advanced Breast Cancer"
+            },
+            {
+              "nct_id": "NCT01026142",
+              "excerpt": "A Study of a Combination of Trastuzumab and Capecitabine With or Without Pertuzumab in Patients With HER2-positive Metastatic Breast Cancer (PHEREXA)"
+            },
+            {
+              "nct_id": "NCT04717531",
+              "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+            },
+            {
+              "nct_id": "NCT04899128",
+              "excerpt": "Treatment With Pyrotinib-Based Therapy in Lapatinib Resistant HER2-Positive Metastatic Breast Cancer"
+            },
+            {
+              "nct_id": "NCT03439046",
+              "excerpt": "Study of the Molecular Features of Postmenopausal Women With HR+ HER2-negative aBC on First-line Treatment With Ribociclib and Letrozole and, in Patients With a PIK3CA Mutation, on Second-line Treatme"
+            }
+          ],
+          "nodes": [
+            {
+              "id": "drug:AZD5363 when combined with weekly paclitaxel.",
+              "label": "AZD5363 when combined with weekly paclitaxel.",
+              "type": "drug"
+            },
+            {
+              "id": "drug:AZD9833",
+              "label": "AZD9833",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Alpelisib",
+              "label": "Alpelisib",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Bevacizumab",
+              "label": "Bevacizumab",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Capecitabine",
+              "label": "Capecitabine",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Celecoxib",
+              "label": "Celecoxib",
+              "type": "drug"
+            },
+            {
+              "id": "drug:CyPep-1",
+              "label": "CyPep-1",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Cyclophosphamide",
+              "label": "Cyclophosphamide",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Dabigatran Etexilate",
+              "label": "Dabigatran Etexilate",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Dexrazoxane hydrochloride",
+              "label": "Dexrazoxane hydrochloride",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Docetaxel",
+              "label": "Docetaxel",
+              "type": "drug"
+            },
+            {
+              "id": "drug:ET mono \u00b1 LHRH",
+              "label": "ET mono \u00b1 LHRH",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Epirubicin",
+              "label": "Epirubicin",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Fulvestrant",
+              "label": "Fulvestrant",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Ganciclovir",
+              "label": "Ganciclovir",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Indocyanine green",
+              "label": "Indocyanine green",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Ixabepilone",
+              "label": "Ixabepilone",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Letrozole",
+              "label": "Letrozole",
+              "type": "drug"
+            },
+            {
+              "id": "drug:MLN9708",
+              "label": "MLN9708",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Midazolam",
+              "label": "Midazolam",
+              "type": "drug"
+            },
+            {
+              "id": "drug:OTS167PO",
+              "label": "OTS167PO",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Omeprazole",
+              "label": "Omeprazole",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Paclitaxel",
+              "label": "Paclitaxel",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Palbociclib",
+              "label": "Palbociclib",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Pembrolizumab 25 MG/ML [KEYTRUDA\u00ae]",
+              "label": "Pembrolizumab 25 MG/ML [KEYTRUDA\u00ae]",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Pertuzumab",
+              "label": "Pertuzumab",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Pyrotinib",
+              "label": "Pyrotinib",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Radioisotope",
+              "label": "Radioisotope",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Ribociclib",
+              "label": "Ribociclib",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Stimotimagene copolymerplasmid",
+              "label": "Stimotimagene copolymerplasmid",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Taxane",
+              "label": "Taxane",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Trastuzumab",
+              "label": "Trastuzumab",
+              "type": "drug"
+            },
+            {
+              "id": "drug:Vinorelbine",
+              "label": "Vinorelbine",
+              "type": "drug"
+            },
+            {
+              "id": "drug:abemaciclib + ET \u00b1 LHRH",
+              "label": "abemaciclib + ET \u00b1 LHRH",
+              "type": "drug"
+            },
+            {
+              "id": "drug:ribociclib + AI \u00b1 LHRH",
+              "label": "ribociclib + AI \u00b1 LHRH",
+              "type": "drug"
+            },
+            {
+              "id": "drug:utidelone injection",
+              "label": "utidelone injection",
+              "type": "drug"
+            },
+            {
+              "id": "sponsor:AstraZeneca",
+              "label": "AstraZeneca",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Cytovation AS",
+              "label": "Cytovation AS",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Dartmouth-Hitchcock Medical Center",
+              "label": "Dartmouth-Hitchcock Medical Center",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Fudan University",
+              "label": "Fudan University",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Gene Surgery LLC",
+              "label": "Gene Surgery LLC",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Henan Cancer Hospital",
+              "label": "Henan Cancer Hospital",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Hoffmann-La Roche",
+              "label": "Hoffmann-La Roche",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:National Cancer Center, Korea",
+              "label": "National Cancer Center, Korea",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Novartis Pharmaceuticals",
+              "label": "Novartis Pharmaceuticals",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:OncoTherapy Science, Inc.",
+              "label": "OncoTherapy Science, Inc.",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:Pfizer",
+              "label": "Pfizer",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "label": "The First Affiliated Hospital with Nanjing Medical University",
+              "type": "sponsor"
+            },
+            {
+              "id": "sponsor:University of Wisconsin, Madison",
+              "label": "University of Wisconsin, Madison",
+              "type": "sponsor"
+            }
+          ],
+          "edges": [
+            {
+              "source": "sponsor:Hoffmann-La Roche",
+              "target": "drug:Capecitabine",
+              "weight": 3,
+              "citations": [
+                {
+                  "nct_id": "NCT01725386",
+                  "excerpt": "An Observational Study of Xeloda (Capecitabine) in Participants With Metastatic or Advanced Breast Cancer"
+                },
+                {
+                  "nct_id": "NCT01026142",
+                  "excerpt": "A Study of a Combination of Trastuzumab and Capecitabine With or Without Pertuzumab in Patients With HER2-positive Metastatic Breast Cancer (PHEREXA)"
+                },
+                {
+                  "nct_id": "NCT01026142",
+                  "excerpt": "A Study of a Combination of Trastuzumab and Capecitabine With or Without Pertuzumab in Patients With HER2-positive Metastatic Breast Cancer (PHEREXA)"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Pyrotinib",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                },
+                {
+                  "nct_id": "NCT04899128",
+                  "excerpt": "Treatment With Pyrotinib-Based Therapy in Lapatinib Resistant HER2-Positive Metastatic Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:Letrozole",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT03439046",
+                  "excerpt": "Study of the Molecular Features of Postmenopausal Women With HR+ HER2-negative aBC on First-line Treatment With Ribociclib and Letrozole and, in Patients With a PIK3CA Mutation, on Second-line Treatme"
+                },
+                {
+                  "nct_id": "NCT01231659",
+                  "excerpt": "Safety and Efficacy of RAD001 (Everolimus) in Combination With Letrozole in the Treatment of Postmenopausal Women With Locally Advanced or Metastatic Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Fudan University",
+              "target": "drug:Dexrazoxane hydrochloride",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT00955890",
+                  "excerpt": "Dexrazoxane as a Protective Agent in Anthracycline Treated Breast Cancer"
+                },
+                {
+                  "nct_id": "NCT00955890",
+                  "excerpt": "Dexrazoxane as a Protective Agent in Anthracycline Treated Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Hoffmann-La Roche",
+              "target": "drug:Pertuzumab",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT01026142",
+                  "excerpt": "A Study of a Combination of Trastuzumab and Capecitabine With or Without Pertuzumab in Patients With HER2-positive Metastatic Breast Cancer (PHEREXA)"
+                },
+                {
+                  "nct_id": "NCT02266173",
+                  "excerpt": "Observational Study of Pertuzumab Safety in Participants With Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Hoffmann-La Roche",
+              "target": "drug:Trastuzumab",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT01026142",
+                  "excerpt": "A Study of a Combination of Trastuzumab and Capecitabine With or Without Pertuzumab in Patients With HER2-positive Metastatic Breast Cancer (PHEREXA)"
+                },
+                {
+                  "nct_id": "NCT02419742",
+                  "excerpt": "Safety and Efficacy of Trastuzumab as Part of Breast Cancer Treatment Regimen"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Hoffmann-La Roche",
+              "target": "drug:Paclitaxel",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT02419742",
+                  "excerpt": "Safety and Efficacy of Trastuzumab as Part of Breast Cancer Treatment Regimen"
+                },
+                {
+                  "nct_id": "NCT00846027",
+                  "excerpt": "A Study of Avastin (Bevacizumab) in Combination With Taxane-based Chemotherapy as First Line Treatment in Patients With HER-2 Negative Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:AZD5363 when combined with weekly paclitaxel.",
+              "weight": 2,
+              "citations": [
+                {
+                  "nct_id": "NCT01625286",
+                  "excerpt": "Investigating Safety, Tolerability and Efficacy of AZD5363 When Combined With Paclitaxel in Breast Cancer Patients"
+                },
+                {
+                  "nct_id": "NCT01625286",
+                  "excerpt": "Investigating Safety, Tolerability and Efficacy of AZD5363 When Combined With Paclitaxel in Breast Cancer Patients"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:National Cancer Center, Korea",
+              "target": "drug:Indocyanine green",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02479997",
+                  "excerpt": "Clinical Application of Dual Sentinel Lymph Node Staining Method in Breast Cancer Patients"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:National Cancer Center, Korea",
+              "target": "drug:Radioisotope",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02479997",
+                  "excerpt": "Clinical Application of Dual Sentinel Lymph Node Staining Method in Breast Cancer Patients"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Pfizer",
+              "target": "drug:Palbociclib",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02600923",
+                  "excerpt": "Palbociclib Plus Letrozole For Postmenopausal Women With HR(+) HER2(-) Advanced Breast Cancer For Whom Letrozole Is Deemed Appropriate"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Pfizer",
+              "target": "drug:Letrozole",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02600923",
+                  "excerpt": "Palbociclib Plus Letrozole For Postmenopausal Women With HR(+) HER2(-) Advanced Breast Cancer For Whom Letrozole Is Deemed Appropriate"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Henan Cancer Hospital",
+              "target": "drug:utidelone injection",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05398861",
+                  "excerpt": "Utidelone Combined With Bevacizumab in the Treatment of \u2265 2 Lines of HER-2 Negative Advanced Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Henan Cancer Hospital",
+              "target": "drug:Bevacizumab",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05398861",
+                  "excerpt": "Utidelone Combined With Bevacizumab in the Treatment of \u2265 2 Lines of HER-2 Negative Advanced Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Cytovation AS",
+              "target": "drug:CyPep-1",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05383170",
+                  "excerpt": "A Study to Evaluate the Safety and Efficacy of CyPep-1 in Combination With Pembrolizumab for the Treatment of Advanced or Metastatic Cancers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Cytovation AS",
+              "target": "drug:Pembrolizumab 25 MG/ML [KEYTRUDA\u00ae]",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05383170",
+                  "excerpt": "A Study to Evaluate the Safety and Efficacy of CyPep-1 in Combination With Pembrolizumab for the Treatment of Advanced or Metastatic Cancers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Trastuzumab",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Pertuzumab",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Docetaxel",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Epirubicin",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:The First Affiliated Hospital with Nanjing Medical University",
+              "target": "drug:Cyclophosphamide",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT04717531",
+                  "excerpt": "Pyrotinib as Neoadjuvant Agent for Non-objective Response HER2-positive Early Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:OncoTherapy Science, Inc.",
+              "target": "drug:OTS167PO",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02926690",
+                  "excerpt": "Safety Study of MELK Inhibitor to Treat Patients With Advanced Breast Cancer and Triple Negative Breast Cancer"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Gene Surgery LLC",
+              "target": "drug:Stimotimagene copolymerplasmid",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05578820",
+                  "excerpt": "Safety, Tolerability and Pharmacokinetics Investigation of Stimotimagene Copolymerplasmid"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Gene Surgery LLC",
+              "target": "drug:Ganciclovir",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05578820",
+                  "excerpt": "Safety, Tolerability and Pharmacokinetics Investigation of Stimotimagene Copolymerplasmid"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:ribociclib + AI \u00b1 LHRH",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT06830720",
+                  "excerpt": "A Non-interventional Study for Kisqali (Ribociclib) in Combination With an Aromatase Inhibitor for Adjuvant Treatment in Patients With HR+/HER2- Early Breast Cancer at High Risk of Recurrence"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:abemaciclib + ET \u00b1 LHRH",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT06830720",
+                  "excerpt": "A Non-interventional Study for Kisqali (Ribociclib) in Combination With an Aromatase Inhibitor for Adjuvant Treatment in Patients With HR+/HER2- Early Breast Cancer at High Risk of Recurrence"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:ET mono \u00b1 LHRH",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT06830720",
+                  "excerpt": "A Non-interventional Study for Kisqali (Ribociclib) in Combination With an Aromatase Inhibitor for Adjuvant Treatment in Patients With HR+/HER2- Early Breast Cancer at High Risk of Recurrence"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Dartmouth-Hitchcock Medical Center",
+              "target": "drug:Fulvestrant",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02384746",
+                  "excerpt": "Phase I Study of the Combination of MLN9708 and Fulvestrant"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Dartmouth-Hitchcock Medical Center",
+              "target": "drug:MLN9708",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT02384746",
+                  "excerpt": "Phase I Study of the Combination of MLN9708 and Fulvestrant"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:Ribociclib",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03439046",
+                  "excerpt": "Study of the Molecular Features of Postmenopausal Women With HR+ HER2-negative aBC on First-line Treatment With Ribociclib and Letrozole and, in Patients With a PIK3CA Mutation, on Second-line Treatme"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:Alpelisib",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03439046",
+                  "excerpt": "Study of the Molecular Features of Postmenopausal Women With HR+ HER2-negative aBC on First-line Treatment With Ribociclib and Letrozole and, in Patients With a PIK3CA Mutation, on Second-line Treatme"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:Novartis Pharmaceuticals",
+              "target": "drug:Fulvestrant",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03439046",
+                  "excerpt": "Study of the Molecular Features of Postmenopausal Women With HR+ HER2-negative aBC on First-line Treatment With Ribociclib and Letrozole and, in Patients With a PIK3CA Mutation, on Second-line Treatme"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:AZD9833",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05438303",
+                  "excerpt": "Study to Assess the Effect of Co-Administration of AZD9833 on the Pharmacokinetics of Midazolam, of Omeprazole, of Celecoxib and of Dabigatran Etexilate in Healthy Postmenopausal Female Volunteers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:Midazolam",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05438303",
+                  "excerpt": "Study to Assess the Effect of Co-Administration of AZD9833 on the Pharmacokinetics of Midazolam, of Omeprazole, of Celecoxib and of Dabigatran Etexilate in Healthy Postmenopausal Female Volunteers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:Omeprazole",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05438303",
+                  "excerpt": "Study to Assess the Effect of Co-Administration of AZD9833 on the Pharmacokinetics of Midazolam, of Omeprazole, of Celecoxib and of Dabigatran Etexilate in Healthy Postmenopausal Female Volunteers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:Dabigatran Etexilate",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05438303",
+                  "excerpt": "Study to Assess the Effect of Co-Administration of AZD9833 on the Pharmacokinetics of Midazolam, of Omeprazole, of Celecoxib and of Dabigatran Etexilate in Healthy Postmenopausal Female Volunteers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:AstraZeneca",
+              "target": "drug:Celecoxib",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT05438303",
+                  "excerpt": "Study to Assess the Effect of Co-Administration of AZD9833 on the Pharmacokinetics of Midazolam, of Omeprazole, of Celecoxib and of Dabigatran Etexilate in Healthy Postmenopausal Female Volunteers"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:University of Wisconsin, Madison",
+              "target": "drug:Taxane",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03393741",
+                  "excerpt": "Pharmacodynamic Biomarkers of Standard Anti-microtubule Drugs as Assessed by Early Tumor Biopsy"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:University of Wisconsin, Madison",
+              "target": "drug:Vinorelbine",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03393741",
+                  "excerpt": "Pharmacodynamic Biomarkers of Standard Anti-microtubule Drugs as Assessed by Early Tumor Biopsy"
+                }
+              ]
+            },
+            {
+              "source": "sponsor:University of Wisconsin, Madison",
+              "target": "drug:Ixabepilone",
+              "weight": 1,
+              "citations": [
+                {
+                  "nct_id": "NCT03393741",
+                  "excerpt": "Pharmacodynamic Biomarkers of Standard Anti-microtubule Drugs as Assessed by Early Tumor Biopsy"
+                }
+              ]
+            }
+          ],
+          "node_count": 49,
+          "edge_count": 40
+        }
+      ]
+    },
+    "meta": {
+      "filters": {
+        "condition": "breast cancer"
+      },
+      "source": "clinicaltrials.gov",
+      "query_interpretation": "Interpreted as a network query, about breast cancer, grouped by sponsor drug.",
+      "total_trials_fetched": 16467,
+      "notes": "Network built from a sample of 200 of 16467 matching trials. Showing the 40 strongest sponsor-drug links (of 207 found); only DRUG/BIOLOGICAL interventions are treated as drugs. Counts are exact per bucket (ClinicalTrials.gov countTotal); up to 5 sample studies are cited per data point."
+    }
+  }
+}

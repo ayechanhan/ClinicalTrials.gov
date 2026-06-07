@@ -1,0 +1,348 @@
+{
+  "request": {
+    "query": "How has the number of trials for Pembrolizumab changed per year since 2015?"
+  },
+  "response": {
+    "visualization": {
+      "type": "time_series",
+      "title": "Pembrolizumab trials by start year (2015-2026)",
+      "encoding": {
+        "x": {
+          "field": "year",
+          "type": "temporal"
+        },
+        "y": {
+          "field": "trial_count",
+          "type": "quantitative"
+        },
+        "series": null,
+        "nodes": null,
+        "edges": null
+      },
+      "data": [
+        {
+          "citations": [
+            {
+              "nct_id": "NCT02406781",
+              "excerpt": "Combination of MK3475 and Metronomic Cyclophosphamide in Patients With Advanced Sarcomas : Multicentre Phase II Trial \u2014 Start date: 2015-06"
+            },
+            {
+              "nct_id": "NCT02608385",
+              "excerpt": "Study of PD1 Blockade by Pembrolizumab With Stereotactic Body Radiotherapy in Advanced Solid Tumors \u2014 Start date: 2015-12"
+            },
+            {
+              "nct_id": "NCT02311582",
+              "excerpt": "MK-3475 in Combination With MRI-guided Laser Ablation in Recurrent Malignant Gliomas \u2014 Start date: 2015-08-05"
+            },
+            {
+              "nct_id": "NCT02574533",
+              "excerpt": "Pilot Study of Vigil\u2122 + Pembrolizumab for Advanced Melanoma \u2014 Start date: 2015-10"
+            },
+            {
+              "nct_id": "NCT02440425",
+              "excerpt": "Dose Dense Paclitaxel With Pembrolizumab (MK-3475) in Platinum Resistant Ovarian Cancer \u2014 Start date: 2015-10-20"
+            }
+          ],
+          "year": 2015,
+          "trial_count": 120
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT02603887",
+              "excerpt": "Pembrolizumab in Treating Patients With Intermediate or High-Risk Smoldering Multiple Myeloma \u2014 Start date: 2016-07-20"
+            },
+            {
+              "nct_id": "NCT02608684",
+              "excerpt": "A Study of Pembrolizumab With Standard Treatment in Patients With Recurrent Platinum-resistant Ovarian Cancer \u2014 Start date: 2016-02-08"
+            },
+            {
+              "nct_id": "NCT02677155",
+              "excerpt": "Sequential Intranodal Immunotherapy (SIIT) Combined With Anti-PD1 (Pembrolizumab) in Follicular Lymphoma \u2014 Start date: 2016-01"
+            },
+            {
+              "nct_id": "NCT02865811",
+              "excerpt": "Pembrolizumab Combined With PLD For Recurrent Platinum Resistant Ovarian, Fallopian Tube Or Peritoneal Cancer \u2014 Start date: 2016-09-15"
+            },
+            {
+              "nct_id": "NCT03190811",
+              "excerpt": "Anti-PD-1 Alone or Combined With Autologous DC-CIK Cell Therapy in Advanced Solid Tumors \u2014 Start date: 2016-09"
+            }
+          ],
+          "year": 2016,
+          "trial_count": 195
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT03260322",
+              "excerpt": "A Multiple-dose Study of ASP8374, an Immune Checkpoint Inhibitor, as a Single Agent and in Combination With Pembrolizumab in Subjects With Advanced Solid Tumors \u2014 Start date: 2017-09-08"
+            },
+            {
+              "nct_id": "NCT03025880",
+              "excerpt": "Trial to Evaluate Efficacy and Safety of Pembrolizumab and Gemcitabine in HER2-negative ABC \u2014 Start date: 2017-06-28"
+            },
+            {
+              "nct_id": "NCT03013127",
+              "excerpt": "A Study of Pembrolizumab in Patients With Relapsed Or Metastatic Osteosarcoma Not Eligible for Curative Surgery \u2014 Start date: 2017-05-30"
+            },
+            {
+              "nct_id": "NCT03411473",
+              "excerpt": "Study of AGEN1884 With Pembrolizumab in 1L NSCLC \u2014 Start date: 2017-10-04"
+            },
+            {
+              "nct_id": "NCT03229278",
+              "excerpt": "Trigriluzole With Nivolumab and Pembrolizumab in Treating Patients With Metastatic or Unresectable Solid Malignancies or Lymphoma \u2014 Start date: 2017-10-03"
+            }
+          ],
+          "year": 2017,
+          "trial_count": 260
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT03596281",
+              "excerpt": "Pembrolizumab in Combination with Bevacizumab and Pegylated Liposomal Doxorubicin in Patients with Ovarian Cancer \u2014 Start date: 2018-12-05"
+            },
+            {
+              "nct_id": "NCT03631407",
+              "excerpt": "Safety and Efficacy of Vicriviroc (MK-7690) in Combination With Pembrolizumab (MK-3475) in Participants With Advanced/Metastatic Microsatellite Stable (MSS) Col \u2014 Start date: 2018-09-24"
+            },
+            {
+              "nct_id": "NCT03428802",
+              "excerpt": "Pembrolizumab in Treating Participants With Metastatic, Recurrent or Locally Advanced Cancer and Genomic Instability \u2014 Start date: 2018-03-08"
+            },
+            {
+              "nct_id": "NCT03419130",
+              "excerpt": "Radiation Therapy and Pembrolizumab in Treating Patients With Localized Urothelial Bladder Cancer \u2014 Start date: 2018-07-18"
+            },
+            {
+              "nct_id": "NCT03239899",
+              "excerpt": "PD-1 Inhibition to Determine CNS Reservoir of HIV-Infection \u2014 Start date: 2018-04-09"
+            }
+          ],
+          "year": 2018,
+          "trial_count": 254
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT03937895",
+              "excerpt": "Allogeneic NK Cell (\"SMT-NK\") in Combination With Pembrolizumab in Advanced Biliary Tract Cancer \u2014 Start date: 2019-12-03"
+            },
+            {
+              "nct_id": "NCT03799003",
+              "excerpt": "A Study of ASP1951 in Subjects With Advanced Solid Tumors \u2014 Start date: 2019-01-14"
+            },
+            {
+              "nct_id": "NCT04157985",
+              "excerpt": "Evaluating Length of Treatment With PD-1/PD-L1 Inhibitor in Advanced Solid Tumors \u2014 Start date: 2019-11-15"
+            },
+            {
+              "nct_id": "NCT04130516",
+              "excerpt": "Study Assessing MTD, Safety, Tolerability, PK and Anti-tumor Effects of LNS8801alone and With Pembrolizumab \u2014 Start date: 2019-10-21"
+            },
+            {
+              "nct_id": "NCT03948763",
+              "excerpt": "A Study of mRNA-5671/V941 as Monotherapy and in Combination With Pembrolizumab (V941-001) \u2014 Start date: 2019-06-26"
+            }
+          ],
+          "year": 2019,
+          "trial_count": 247
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT04317066",
+              "excerpt": "A Study of Pembrolizumab (MK-3475) in Participants With Relapsed or Refractory Primary Mediastinal Large B-cell Lymphoma (rrPMBCL) (MK-3475-A33/KEYNOTE-A33) \u2014 Start date: 2020-06-26"
+            },
+            {
+              "nct_id": "NCT04303169",
+              "excerpt": "Substudy 02C: Safety and Efficacy of Pembrolizumab in Combination With Investigational Agents or Pembrolizumab Alone in Participants With Stage III Melanoma Who \u2014 Start date: 2020-06-26"
+            },
+            {
+              "nct_id": "NCT04417192",
+              "excerpt": "Olaparib Monotherapy and Olaparib + Pembrolizumab Combination Therapy for Ovarian Cancer \u2014 Start date: 2020-12-01"
+            },
+            {
+              "nct_id": "NCT04648202",
+              "excerpt": "FS120 Phase 1/1b Study in Patients With Advanced Malignancies \u2014 Start date: 2020-11-18"
+            },
+            {
+              "nct_id": "NCT06991907",
+              "excerpt": "PD-1 Inhibitor Combined With 125I Seed Implantation for Hepatocellular Carcinoma's Extrahepatic Metastasis: Efficacy and Safety \u2014 Start date: 2020-01-01"
+            }
+          ],
+          "year": 2020,
+          "trial_count": 262
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT04387227",
+              "excerpt": "Pembrolizumab and Carboplatin for the Treatment of Recurrent Ovarian, Fallopian Tube, or Primary Peritoneal Cancer \u2014 Start date: 2021-03-18"
+            },
+            {
+              "nct_id": "NCT04753879",
+              "excerpt": "Multi-agent Low Dose Chemotherapy GAX-CI Followed by Olaparib and Pembro in Metastatic Pancreatic Ductal Cancer. \u2014 Start date: 2021-09-29"
+            },
+            {
+              "nct_id": "NCT05064059",
+              "excerpt": "A Study of Coformulated Favezelimab/Pembrolizumab (MK-4280A) Versus Standard of Care in Subjects With Previously Treated Metastatic PD-L1 Positive Colorectal Ca \u2014 Start date: 2021-11-10"
+            },
+            {
+              "nct_id": "NCT04840394",
+              "excerpt": "Clinical Study of BDB018: Monotherapy and in Combination With Pembrolizumab in Subjects With Advanced Solid Tumors \u2014 Start date: 2021-06-22"
+            },
+            {
+              "nct_id": "NCT04777708",
+              "excerpt": "BO-112 and Pembrolizumab for the Treatment of PD-1/PD-L1 Refractory Liver Cancer \u2014 Start date: 2021-10-13"
+            }
+          ],
+          "year": 2021,
+          "trial_count": 265
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT05052723",
+              "excerpt": "Cabozantinib and Pembrolizumab in Metastatic Pancreas \u2014 Start date: 2022-01-04"
+            },
+            {
+              "nct_id": "NCT05438329",
+              "excerpt": "First-in-human Study of DB-1305/BNT325 for Advanced/Metastatic Solid Tumors \u2014 Start date: 2022-07-19"
+            },
+            {
+              "nct_id": "NCT05541445",
+              "excerpt": "Pembrolizumab Plus CRT Followed by Surgery in Upper ESCC \u2014 Start date: 2022-08-01"
+            },
+            {
+              "nct_id": "NCT05269381",
+              "excerpt": "Personalized Neoantigen Peptide-Based Vaccine in Combination With Pembrolizumab for Treatment of Advanced Solid Tumors \u2014 Start date: 2022-03-31"
+            },
+            {
+              "nct_id": "NCT05369000",
+              "excerpt": "Trial of LAVA-1207 in Patients With Therapy Refractory Metastatic Castration Resistant Prostate Cancer (mCRPC) Resistant Prostate Cancer \u2014 Start date: 2022-01-17"
+            }
+          ],
+          "year": 2022,
+          "trial_count": 298
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT05286320",
+              "excerpt": "Phase Ib/II Trial of Combining Pembrolizumab and Lenvatinib With SBRT for HCC Patients With Portal Vein Thrombosis. \u2014 Start date: 2023-03-01"
+            },
+            {
+              "nct_id": "NCT05383170",
+              "excerpt": "A Study to Evaluate the Safety and Efficacy of CyPep-1 in Combination With Pembrolizumab for the Treatment of Advanced or Metastatic Cancers \u2014 Start date: 2023-03-21"
+            },
+            {
+              "nct_id": "NCT05774886",
+              "excerpt": "Implantable Microdevice for TNBC - Pilot Study \u2014 Start date: 2023-05"
+            },
+            {
+              "nct_id": "NCT05704985",
+              "excerpt": "Evaluating Safety and Biomarkers Using DK210 (EGFR) for Locally Advanced or Metastatic EGFR+ Tumors \u2014 Start date: 2023-04-03"
+            },
+            {
+              "nct_id": "NCT05894447",
+              "excerpt": "Naptumomab Estafenatox in Combination With Pembrolizumab Preceded by Obinutuzumab in Patients With Urothelial Cancers \u2014 Start date: 2023-11"
+            }
+          ],
+          "year": 2023,
+          "trial_count": 257
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06345183",
+              "excerpt": "Real-World Outcomes of Nivolumab+Ipilimumab and Pembrolizumab+Lenvatinib Among US Advanced Renal Cell Carcinoma (aRCC) Patients \u2014 Start date: 2024-02-19"
+            },
+            {
+              "nct_id": "NCT06155279",
+              "excerpt": "Induction Chemo+Immunotherapy in Resectable Epithelioid and Biphasic Pleural Mesothelioma (CHIMERA Study) \u2014 Start date: 2024-11-06"
+            },
+            {
+              "nct_id": "NCT06627595",
+              "excerpt": "Impact of Physical Activity on Immunotherapy-induced Toxicities in Melanoma Management \u2014 Start date: 2024-11-05"
+            },
+            {
+              "nct_id": "NCT06374602",
+              "excerpt": "Efficacy of Pembrolizumab and Lenvatinib in Patients With Anaplastic Thyroid Cancer \u2014 Start date: 2024-03-25"
+            },
+            {
+              "nct_id": "NCT06236425",
+              "excerpt": "TBio-4101 and Pembro wi/ or w/o Chemo in Recurrent/Metastatic HNSCC \u2014 Start date: 2024-03-14"
+            }
+          ],
+          "year": 2024,
+          "trial_count": 256
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT07011823",
+              "excerpt": "Immune-checkpoint Blockade After Partial Breast Irradiation by Pembrolizumab in Early TNBC \u2014 Start date: 2025-07-16"
+            },
+            {
+              "nct_id": "NCT06983743",
+              "excerpt": "A Study of ERAS-0015 in Patients With Advanced or Metastatic Solid Tumors \u2014 Start date: 2025-06-05"
+            },
+            {
+              "nct_id": "NCT07122687",
+              "excerpt": "IBI363 Combined With Chemotherapy or Pembrolizumab Combined With Chemotherapy as Neoadjuvant Therapy in Resectable Stage IB-III Non-Squamous Non-Small Cell Lung \u2014 Start date: 2025-08-26"
+            },
+            {
+              "nct_id": "NCT07174453",
+              "excerpt": "Trial to Evaluate irAEs With Different Standard of Care Dosing Strategies of Standard of Care Immunotherapies \u2014 Start date: 2025-10-07"
+            },
+            {
+              "nct_id": "NCT07353957",
+              "excerpt": "Study to Investigate Petosemtamab in Adults With Metastatic Non-Small Cell Lung Cancer \u2014 Start date: 2025-03-27"
+            }
+          ],
+          "year": 2025,
+          "trial_count": 259
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT07383441",
+              "excerpt": "Adding Biotherapy or Placebo to Standard Treatment for Advanced Kidney Cancer \u2014 Start date: 2026-06-10"
+            },
+            {
+              "nct_id": "NCT07216703",
+              "excerpt": "A Clinical Study of Sacituzumab Tirumotecan (MK-2870) in Combination With Pembrolizumab (MK-3475) as First-line Maintenance Treatment of Cervical Cancer (MK-287 \u2014 Start date: 2026-01-19"
+            },
+            {
+              "nct_id": "NCT07412054",
+              "excerpt": "Lenvatinib and Pembrolizumab With or Without BCAA in Unresectable HCC \u2014 Start date: 2026-03-01"
+            },
+            {
+              "nct_id": "NCT07524257",
+              "excerpt": "Phase 3 Study of Nogapendekin Alfa Inbakicept Plus Standard of Care vs Standard of Care in First-Line Advanced or Metastatic NSCLC \u2014 Start date: 2026-05-29"
+            },
+            {
+              "nct_id": "NCT06898970",
+              "excerpt": "Intratumoral Vusolimogene Oderparepvec (VO) in Combination With Pembrolizumab for Angiosarcoma \u2014 Start date: 2026-01-09"
+            }
+          ],
+          "year": 2026,
+          "trial_count": 131
+        }
+      ]
+    },
+    "meta": {
+      "filters": {
+        "drug_name": "Pembrolizumab",
+        "start_year": 2015
+      },
+      "source": "clinicaltrials.gov",
+      "query_interpretation": "Interpreted as a time trend query, about Pembrolizumab, grouped by year.",
+      "total_trials_fetched": 2804,
+      "notes": "Counts are exact per bucket (ClinicalTrials.gov countTotal); up to 5 sample studies are cited per data point."
+    }
+  }
+}

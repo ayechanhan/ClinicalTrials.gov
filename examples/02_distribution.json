@@ -1,0 +1,191 @@
+{
+  "request": {
+    "query": "How are lung cancer trials distributed across phases?"
+  },
+  "response": {
+    "visualization": {
+      "type": "bar_chart",
+      "title": "Lung cancer trials by phase",
+      "encoding": {
+        "x": {
+          "field": "phase",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "trial_count",
+          "type": "quantitative"
+        },
+        "series": null,
+        "nodes": null,
+        "edges": null
+      },
+      "data": [
+        {
+          "citations": [
+            {
+              "nct_id": "NCT00130780",
+              "excerpt": "Multimodality Treatment for Patients With Resectable Non-Small Cell Lung Cancer (NSCLC) - BEACON Study: Bevacizumab and Chemotherapy for Operable NSCLC \u2014 Phase: PHASE2"
+            },
+            {
+              "nct_id": "NCT04068896",
+              "excerpt": "Study of NGM120 in Subjects With Advanced Solid Tumors, Pancreatic Cancer, and Prostate Cancer Using Combination Therapy \u2014 Phase: PHASE1, PHASE2"
+            },
+            {
+              "nct_id": "NCT01427946",
+              "excerpt": "Phase 1b/2 Study of Retaspimycin HCl (IPI-504) in Combination With Everolimus in KRAS Mutant Non-small Cell Lung Cancer \u2014 Phase: PHASE1, PHASE2"
+            },
+            {
+              "nct_id": "NCT07617246",
+              "excerpt": "The Efficacy and Safety of Fosrolapitant and Palonosetron Hydrochloride for Injection in Preventing Nausea and Vomiting Caused by Multi-cycle Immunotherapy and  \u2014 Phase: PHASE2"
+            },
+            {
+              "nct_id": "NCT06339242",
+              "excerpt": "A Study of Furmonertinib Combined With Chemotherapy in the Treatment of NSCLC With Leptomeningeal Metastasis \u2014 Phase: PHASE2"
+            }
+          ],
+          "phase": "Phase 2",
+          "trial_count": 5242
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT04068896",
+              "excerpt": "Study of NGM120 in Subjects With Advanced Solid Tumors, Pancreatic Cancer, and Prostate Cancer Using Combination Therapy \u2014 Phase: PHASE1, PHASE2"
+            },
+            {
+              "nct_id": "NCT02743546",
+              "excerpt": "Study of the Safety, Pharmacokinetics, Pharmacodynamics, and Efficacy of Duvortuxizumab (JNJ-64052781) Plus Ibrutinib in Lymphoma \u2014 Phase: PHASE1"
+            },
+            {
+              "nct_id": "NCT01427946",
+              "excerpt": "Phase 1b/2 Study of Retaspimycin HCl (IPI-504) in Combination With Everolimus in KRAS Mutant Non-small Cell Lung Cancer \u2014 Phase: PHASE1, PHASE2"
+            },
+            {
+              "nct_id": "NCT03467360",
+              "excerpt": "Phase I Trial of CArbonic Anhydrase Inhibition in Combination With Radiochemotherapy or Radioimmunotherapy in Small Cell Lung Carcinoma \u2014 Phase: PHASE1"
+            },
+            {
+              "nct_id": "NCT02637531",
+              "excerpt": "A Dose-Escalation Study to Evaluate the Safety, Tolerability, Pharmacokinetics, and Pharmacodynamics of IPI-549 \u2014 Phase: PHASE1"
+            }
+          ],
+          "phase": "Phase 1",
+          "trial_count": 3112
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT05444062",
+              "excerpt": "Quebec Lung Cancer Screening PLUS Trial \u2014 Phase: NA"
+            },
+            {
+              "nct_id": "NCT04366661",
+              "excerpt": "Iraqi Trial for Lung Cancer Screening \u2014 Phase: NA"
+            },
+            {
+              "nct_id": "NCT07268469",
+              "excerpt": "Minimal Residual Disease in Solid Malignancies \u2014 Phase: NA"
+            },
+            {
+              "nct_id": "NCT05063396",
+              "excerpt": "OFA in Thoracic Surgery \u2014 Phase: NA"
+            },
+            {
+              "nct_id": "NCT04654520",
+              "excerpt": "A Randomized Study of Primary Tumor Radiotherapy for Patients With Stage \u2163 NSCLC \u2014 Phase: NA"
+            }
+          ],
+          "phase": "Not Applicable",
+          "trial_count": 2331
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT01524783",
+              "excerpt": "Everolimus Plus Best Supportive Care vs Placebo Plus Best Supportive Care in the Treatment of Patients With Advanced Neuroendocrine Tumors (GI or Lung Origin) \u2014 Phase: PHASE3"
+            },
+            {
+              "nct_id": "NCT04487080",
+              "excerpt": "A Study of Amivantamab and Lazertinib Combination Therapy Versus Osimertinib in Locally Advanced or Metastatic Non-Small Cell Lung Cancer \u2014 Phase: PHASE3"
+            },
+            {
+              "nct_id": "NCT04214262",
+              "excerpt": "Testing the Addition of the Drug Atezolizumab to the Usual Radiation Treatment for Patients With Early Non-small Cell Lung Cancer \u2014 Phase: PHASE3"
+            },
+            {
+              "nct_id": "NCT01968941",
+              "excerpt": "Stereotactic Body Radiotherapy Versus Conventional Radiotherapy in Medically-Inoperable Non-Small Lung Cancer Patients \u2014 Phase: PHASE3"
+            },
+            {
+              "nct_id": "NCT05624996",
+              "excerpt": "Testing the Addition of High Dose, Targeted Radiation to the Usual Treatment for Locally-Advanced Inoperable Non-Small Cell Lung Cancer \u2014 Phase: PHASE3"
+            }
+          ],
+          "phase": "Phase 3",
+          "trial_count": 1369
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT03264794",
+              "excerpt": "the Clinical Trial of Gefitinib(Non - Small Cell Lung Cancer) \u2014 Phase: PHASE4"
+            },
+            {
+              "nct_id": "NCT06951841",
+              "excerpt": "Prospective, Single-arm, Phase II Clinical Study of Irinotecan Hydrochloride Liposome Injection Combined With Platinum and Immune Checkpoint Inhibitors Combined \u2014 Phase: PHASE4"
+            },
+            {
+              "nct_id": "NCT01089322",
+              "excerpt": "Risk Factors Associated to Difficult-to-control Asthma \u2014 Phase: PHASE4"
+            },
+            {
+              "nct_id": "NCT01020786",
+              "excerpt": "A Study in Non-squamous Non Small Cell Lung Cancer in Asian Patients \u2014 Phase: PHASE4"
+            },
+            {
+              "nct_id": "NCT07220356",
+              "excerpt": "C-Raven, a Virtual Tobacco Cessation Intervention in Residency Clinics \u2014 Phase: PHASE4"
+            }
+          ],
+          "phase": "Phase 4",
+          "trial_count": 234
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT04489862",
+              "excerpt": "\u03b1PD1-MSLN-CAR T Cells for the Treatment of MSLN-positive Advanced Solid Tumors \u2014 Phase: EARLY_PHASE1"
+            },
+            {
+              "nct_id": "NCT04906746",
+              "excerpt": "Ruxolitinib for Cancer Cachexia \u2014 Phase: EARLY_PHASE1"
+            },
+            {
+              "nct_id": "NCT04213794",
+              "excerpt": "Heated Intra-peritoneal Chemotherapy With Doxorubicin and Cisplatin for Abdominal for Pelvic Tumors in Pediatric Patients \u2014 Phase: EARLY_PHASE1"
+            },
+            {
+              "nct_id": "NCT05555342",
+              "excerpt": "A Novel Method for Treating Lung Met w/Combo of Electric Fields & Rad Therapy: A Single-Arm \u2014 Phase: EARLY_PHASE1"
+            },
+            {
+              "nct_id": "NCT07235280",
+              "excerpt": "Testing the Safety of Dapagliflozin Prior to Surgery for the Treatment of Patients With Stage IA Lung Adenocarcinoma \u2014 Phase: EARLY_PHASE1"
+            }
+          ],
+          "phase": "Early Phase 1",
+          "trial_count": 127
+        }
+      ]
+    },
+    "meta": {
+      "filters": {
+        "condition": "lung cancer"
+      },
+      "source": "clinicaltrials.gov",
+      "query_interpretation": "Interpreted as a distribution query, about lung cancer, grouped by phase.",
+      "total_trials_fetched": 14209,
+      "notes": "A trial can be registered under multiple phases (or none), so per-phase counts need not sum to the total trial count. Counts are exact per bucket (ClinicalTrials.gov countTotal); up to 5 sample studies are cited per data point."
+    }
+  }
+}

@@ -1,0 +1,426 @@
+{
+  "request": {
+    "query": "Which countries have the most recruiting trials for diabetes?"
+  },
+  "response": {
+    "visualization": {
+      "type": "bar_chart",
+      "title": "Diabetes trials by country",
+      "encoding": {
+        "x": {
+          "field": "country",
+          "type": "nominal"
+        },
+        "y": {
+          "field": "trial_count",
+          "type": "quantitative"
+        },
+        "series": null,
+        "nodes": null,
+        "edges": null
+      },
+      "data": [
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: United States"
+            },
+            {
+              "nct_id": "NCT03865290",
+              "excerpt": "Effects of Ondansetron on Gastrointestinal Sensorimotor Dysfunctions in Diabetes Mellitus and Dyspepsia \u2014 Country: United States"
+            },
+            {
+              "nct_id": "NCT07599982",
+              "excerpt": "Safety Evaluation of MODI, an Insulin Titration Algorithm, in Adults With Diabetes \u2014 Country: United States"
+            },
+            {
+              "nct_id": "NCT04101669",
+              "excerpt": "RESET System Pivotal Trial (Rev F) \u2014 Country: United States"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: United States"
+            }
+          ],
+          "country": "United States",
+          "trial_count": 759
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT07275788",
+              "excerpt": "A Study of REGEND003 on Patients With Type 2 Diabetes Mellitus (T2DM) and Chronic Kidney Disease (CKD) \u2014 Country: China"
+            },
+            {
+              "nct_id": "NCT07129915",
+              "excerpt": "Nudge-Based Shared Decision Making and Self-Management in Type 2 Diabetes: A Randomized Trial \u2014 Country: China"
+            },
+            {
+              "nct_id": "NCT06273631",
+              "excerpt": "Effect of Changes in Carbohydrate Intake Patterns on Glucose Control in Patients With Type 1 Diabetes \u2014 Country: China"
+            },
+            {
+              "nct_id": "NCT06751199",
+              "excerpt": "UCMSCs Combined With Allogeneic Islet Transplantation for the Treatment of Diabetes \u2014 Country: China"
+            },
+            {
+              "nct_id": "NCT06359418",
+              "excerpt": "Acupuncture for Prediabetes With Combined Obesity \u2014 Country: China"
+            }
+          ],
+          "country": "China",
+          "trial_count": 209
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Canada"
+            },
+            {
+              "nct_id": "NCT07142512",
+              "excerpt": "Helping Couples Communicate Better: Does This Help Persons With Type 2 Diabetes Respond Better to a Step Count Prescription? \u2014 Country: Canada"
+            },
+            {
+              "nct_id": "NCT06877975",
+              "excerpt": "Validation and Testing of a Novel Continuous Glucose and Continuous Ketone Monitoring Device in Healthy Volunteers \u2014 Country: Canada"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Canada"
+            },
+            {
+              "nct_id": "NCT07196371",
+              "excerpt": "Feasibility of Aerobic Exercise With Blood Flow Restriction Training in People Living With Type 2 Diabetes \u2014 Country: Canada"
+            }
+          ],
+          "country": "Canada",
+          "trial_count": 127
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: France"
+            },
+            {
+              "nct_id": "NCT05054361",
+              "excerpt": "Crosstalk Between Mucosal-Associated Invariant T (MAIT) Cells and the Gut Microbiota and Mucosa in the Development of Type 1 Diabetes in Children \u2014 Country: France"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: France"
+            },
+            {
+              "nct_id": "NCT07021456",
+              "excerpt": "Impact of Dietary Knowledge Related to Functional Insulin Therapy in Type 1 Diabetes on the Risk of Eating Disorders \u2014 Country: France"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: France"
+            }
+          ],
+          "country": "France",
+          "trial_count": 100
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT03900286",
+              "excerpt": "Low Energy Diet and Familial Partial Lipodystrophy \u2014 Country: United Kingdom"
+            },
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: United Kingdom"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: United Kingdom"
+            },
+            {
+              "nct_id": "NCT05441267",
+              "excerpt": "A Study of Cardiovascular Events iN Diabetes Plus \u2014 Country: United Kingdom"
+            },
+            {
+              "nct_id": "NCT01945840",
+              "excerpt": "Gut Hormones and Roux en Y Gastric Bypass \u2014 Country: United Kingdom"
+            }
+          ],
+          "country": "United Kingdom",
+          "trial_count": 92
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Italy"
+            },
+            {
+              "nct_id": "NCT07602023",
+              "excerpt": "Triglyceride-rich LIPoproteins and INflammatory Cytokines After Oral FAT Loading as Potential Early Biomarkers of the Risk of Progression Towards DIABETES and D \u2014 Country: Italy"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: Italy"
+            },
+            {
+              "nct_id": "NCT06717893",
+              "excerpt": "Clinical and Laboratory Characteristics of a Population of Children and Adolescents With Newly Diagnosed Type 1 Diabetes and Insulin Requirements at Onset \u2014 Country: Italy"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Italy"
+            }
+          ],
+          "country": "Italy",
+          "trial_count": 76
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Germany"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: Germany"
+            },
+            {
+              "nct_id": "NCT06529965",
+              "excerpt": "Evaluating a Digital Intervention for Alleviating Diabetes-specific Emotional Distress in Adults Living With T2DM \u2014 Country: Germany"
+            },
+            {
+              "nct_id": "NCT03539133",
+              "excerpt": "Systemic Organ Communication in STEMI \u2014 Country: Germany"
+            },
+            {
+              "nct_id": "NCT07242664",
+              "excerpt": "Clamp Study to Estimate the Relative Potency of GZR33 Versus Insulin Degludec at Steady State \u2014 Country: Germany"
+            }
+          ],
+          "country": "Germany",
+          "trial_count": 74
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Denmark"
+            },
+            {
+              "nct_id": "NCT07262788",
+              "excerpt": "A Feasibility Study of Optimal Non-Pharmacological Lifestyle Modifications in People With Type 2 Diabetes \u2014 Country: Denmark"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: Denmark"
+            },
+            {
+              "nct_id": "NCT06906081",
+              "excerpt": "Finerenone Treatment for Diabetic Cardiovascular Autonomic Neuropathy: the FibroCAN Study \u2014 Country: Denmark"
+            },
+            {
+              "nct_id": "NCT05623111",
+              "excerpt": "Perineural Injections of Incobotulinumtoxin-A for Diabetic Neuropathic Pain of the Lower Extremities \u2014 Country: Denmark"
+            }
+          ],
+          "country": "Denmark",
+          "trial_count": 66
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT07083401",
+              "excerpt": "A Study to Evaluate the Pharmacokinetics and Safety Between \"BR3006\" and Co-administration of \"BR3006A\", \"BR3006B\", and \"BR3006C\" in Healthy Adult Volunteers (F \u2014 Country: South Korea"
+            },
+            {
+              "nct_id": "NCT06767774",
+              "excerpt": "Comparison of Pitavastatin Plus Ezetimibe Versus High-Intensity Statin Therapy on Risk of New-Onset Diabetes Mellitus \u2014 Country: South Korea"
+            },
+            {
+              "nct_id": "NCT05365438",
+              "excerpt": "Atmeg (Atorvastatin and Omega-3 Combination) and Carotid Atherosclerosis in Patients With Type 2 Diabetes and Combined Dyslipidemia \u2014 Country: South Korea"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: South Korea"
+            },
+            {
+              "nct_id": "NCT06782139",
+              "excerpt": "Effects of Enavogliflozin on Coronary Microvascular and Cardiac Function in Obesity \u2014 Country: South Korea"
+            }
+          ],
+          "country": "South Korea",
+          "trial_count": 57
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Spain"
+            },
+            {
+              "nct_id": "NCT07617961",
+              "excerpt": "THERAVEX Tissue Care Spray Plus for the Management of Cutaneous Wounds, Burns, and Chronic Ulcers \u2014 Country: Spain"
+            },
+            {
+              "nct_id": "NCT07309094",
+              "excerpt": "Clinical, Morphometric and Biochemical Effects on Adiposopathy Associated With the Use of GLP-1RA in CKD \u2014 Country: Spain"
+            },
+            {
+              "nct_id": "NCT05650229",
+              "excerpt": "Efficacy of KL1333 in Adult Patients With Primary Mitochondrial Disease \u2014 Country: Spain"
+            },
+            {
+              "nct_id": "NCT05840497",
+              "excerpt": "Effect of Strength-resistance Exercise in the Reduction of Gestational Diabetes in Pregnant Women with Overweight or Obesity \u2014 Country: Spain"
+            }
+          ],
+          "country": "Spain",
+          "trial_count": 55
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT07152509",
+              "excerpt": "The Effect of Body Weight on Physical Activity Level, Functional Capacity, Balance, and Quality of Life in Individuals With Type 2 Diabetes Mellitus \u2014 Country: Turkey (T\u00fcrkiye)"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Turkey (T\u00fcrkiye)"
+            },
+            {
+              "nct_id": "NCT07433257",
+              "excerpt": "The Effect of Local Corticosteroid Injection in Carpal Tunnel Syndrome Patients With Type 2 Diabetes \u2014 Country: Turkey (T\u00fcrkiye)"
+            },
+            {
+              "nct_id": "NCT04585204",
+              "excerpt": "Comparison of the Detection Rates of 50 Gr-100 Gr OGTT and 75 Gr OGTT That Require Medical Treatment of GDM \u2014 Country: Turkey (T\u00fcrkiye)"
+            },
+            {
+              "nct_id": "NCT07491185",
+              "excerpt": "Effect of Glycemic Control on Intraoperative NIRS and Postoperative Recovery in Diabetic Patients \u2014 Country: Turkey (T\u00fcrkiye)"
+            }
+          ],
+          "country": "Turkey (T\u00fcrkiye)",
+          "trial_count": 51
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06111586",
+              "excerpt": "FrexalimAB in Preservation of Endogenous insULIN Secretion Compared to Placebo in adUlts and Adolescents on Top of inSulin Therapy (FABULINUS) \u2014 Country: Sweden"
+            },
+            {
+              "nct_id": "NCT06239636",
+              "excerpt": "First-in-human Safety Study of Hypoimmune Pancreatic Islet Transplantation in Adult Subjects With Type 1 Diabetes \u2014 Country: Sweden"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Sweden"
+            },
+            {
+              "nct_id": "NCT06151964",
+              "excerpt": "A Trial to Learn How Safe AZD9550 Monotherapy and Combined With AZD6234 is in People With or Without Type 2 Diabetes Who Are Living With Obesity and Overweight \u2014 Country: Sweden"
+            },
+            {
+              "nct_id": "NCT05692778",
+              "excerpt": "Optimized Care of People With Diabetes and Foot Complication in Primary Care \u2014 Country: Sweden"
+            }
+          ],
+          "country": "Sweden",
+          "trial_count": 51
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT05345327",
+              "excerpt": "SGLT2 Inhibitors As First Line Therapy to Prevent Renal Decline in Type 2 Diabetes \u2014 Country: Australia"
+            },
+            {
+              "nct_id": "NCT07098663",
+              "excerpt": "Food Effect, Efficacy and Safety of MKP10241 in Healthy and Obese Adult Participants, With and Without Diabetes \u2014 Country: Australia"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Australia"
+            },
+            {
+              "nct_id": "NCT07284875",
+              "excerpt": "Efficacy and Safety of KAI-9531 in Participants Living With Obesity or Overweight With Weight-Related Comorbidities Who Do Not Have Diabetes \u2014 Country: Australia"
+            },
+            {
+              "nct_id": "NCT06324604",
+              "excerpt": "Safety, Pharmacokinetics, and Pharmacodynamics of MTX-101 in Healthy Adults and Patients \u2014 Country: Australia"
+            }
+          ],
+          "country": "Australia",
+          "trial_count": 47
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT02166372",
+              "excerpt": "Taiwan Diabesity Study:Comparison With Mild Obese T2DM Patients Who Under Metabolic Surgery \u2014 Country: Taiwan"
+            },
+            {
+              "nct_id": "NCT06203847",
+              "excerpt": "The Effect of Prehospital Combination of Epinephrine, Vasopressin, and Steroid in OHCA \u2014 Country: Taiwan"
+            },
+            {
+              "nct_id": "NCT07064473",
+              "excerpt": "EASi-PROTKT\u2122 - A Study to Test Vicadrostat (BI 690517) Taken Together With Empagliflozin in People With Type 2 Diabetes, High Blood Pressure, and Cardiovascular \u2014 Country: Taiwan"
+            },
+            {
+              "nct_id": "NCT06143449",
+              "excerpt": "Taiwan Diabetes Registry \u2014 Country: Taiwan"
+            },
+            {
+              "nct_id": "NCT06436326",
+              "excerpt": "The Impact of Continuous Glucose Monitoring on Maternal and Infant's Outcomes in Gestational Diabetes \u2014 Country: Taiwan"
+            }
+          ],
+          "country": "Taiwan",
+          "trial_count": 39
+        },
+        {
+          "citations": [
+            {
+              "nct_id": "NCT06441591",
+              "excerpt": "Clinical Outcome of Vinpocetine in Diabetic Nephropathy \u2014 Country: Egypt"
+            },
+            {
+              "nct_id": "NCT05763303",
+              "excerpt": "Impact of an Interventional Program on Self-Management \u2014 Country: Egypt"
+            },
+            {
+              "nct_id": "NCT06951074",
+              "excerpt": "Insulin Producing Stem Cell Transplantation Clinical Trial in Type 1 Diabetes \u2014 Country: Egypt"
+            },
+            {
+              "nct_id": "NCT07154134",
+              "excerpt": "Endocan and Copeptin Serum Levels in Preterm Neonates With Respiratory Distress Syndrome \u2014 Country: Egypt"
+            },
+            {
+              "nct_id": "NCT06067399",
+              "excerpt": "Relationship Between Red Cell Distribution Width (RDW) and HbA1C in Patients With Type 2 Diabetes Mellitus After Glycemic Control \u2014 Country: Egypt"
+            }
+          ],
+          "country": "Egypt",
+          "trial_count": 35
+        }
+      ]
+    },
+    "meta": {
+      "filters": {
+        "condition": "diabetes",
+        "status": "RECRUITING"
+      },
+      "source": "clinicaltrials.gov",
+      "query_interpretation": "Interpreted as a geographic query, about diabetes, filtered to status RECRUITING, grouped by country.",
+      "total_trials_fetched": 1943,
+      "notes": "A trial may run in multiple countries, so per-country counts need not sum to the total. Showing the top 15 countries by exact trial count (candidates discovered from a 300-study sample). Counts are exact per bucket (ClinicalTrials.gov countTotal); up to 5 sample studies are cited per data point."
+    }
+  }
+}
