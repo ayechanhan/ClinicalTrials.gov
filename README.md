@@ -90,6 +90,12 @@ curl -s http://127.0.0.1:8000/query \
 
 Five ready-made request/response pairs live in [`examples/`](examples/) (one per query class).
 
+### Demo UI
+
+With the server running, open **http://127.0.0.1:8000/demo** for a single-page UI that calls
+`POST /query` and renders every chart type (Chart.js for line/bar/grouped, vis-network for the
+graph) with clickable citations — a quick way to see the spec rendered without building a frontend.
+
 ---
 
 ## API

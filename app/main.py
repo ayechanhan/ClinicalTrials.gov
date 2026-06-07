@@ -11,7 +11,10 @@ The planner only sees the query text; all numbers come from the real API and are
 aggregated deterministically — nothing in the data path is model-generated.
 """
 
+from pathlib import Path
+
 from fastapi import FastAPI, HTTPException
+from fastapi.responses import FileResponse
 
 from app.agent.assembler import assemble
 from app.agent.planner import PlannerError, plan_query
@@ -26,8 +29,10 @@ app = FastAPI(
         "visualization specification backed by real ClinicalTrials.gov data, with "
         "per-data-point citations."
     ),
-    version="0.2.0",
+    version="0.3.0",
 )
+
+STATIC_DIR = Path(__file__).resolve().parent / "static"
 
 
 @app.get("/", tags=["meta"])
@@ -35,8 +40,9 @@ def root() -> dict:
     """Service banner with a pointer to the interactive docs."""
     return {
         "service": "ClinicalTrials.gov Query-to-Visualization Agent",
-        "version": "0.2.0",
+        "version": "0.3.0",
         "docs": "/docs",
+        "demo": "/demo",
         "query_endpoint": "POST /query",
     }
 
@@ -45,6 +51,12 @@ def root() -> dict:
 def health() -> dict:
     """Liveness probe."""
     return {"status": "ok"}
+
+
+@app.get("/demo", include_in_schema=False)
+def demo() -> FileResponse:
+    """Minimal single-page UI that calls POST /query and renders the result."""
+    return FileResponse(STATIC_DIR / "demo.html")
 
 
 @app.post("/query", response_model=VisualizationResponse, tags=["query"])

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ClinicalTrials.gov Query-to-Visualization</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+  <script src="https://unpkg.com/vis-network@9/standalone/umd/vis-network.min.js"></script>
+  <style>
+    :root { --bg:#f7f8fa; --card:#fff; --ink:#1b2733; --muted:#67727e; --accent:#2563eb; --line:#e3e8ee; }
+    * { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink);
+           font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif; }
+    .wrap { max-width: 960px; margin: 0 auto; padding: 28px 20px 60px; }
+    h1 { font-size: 22px; margin: 0 0 4px; }
+    .sub { color: var(--muted); margin: 0 0 20px; }
+    .row { display:flex; gap:8px; }
+    input[type=text] { flex:1; padding:11px 13px; border:1px solid var(--line); border-radius:8px; font-size:15px; }
+    button { padding:11px 16px; border:0; border-radius:8px; background:var(--accent); color:#fff;
+             font-size:15px; cursor:pointer; }
+    button:disabled { opacity:.6; cursor:default; }
+    .chips { margin:12px 0 4px; display:flex; flex-wrap:wrap; gap:6px; }
+    .chip { font-size:12.5px; padding:6px 10px; border:1px solid var(--line);
+            border-radius:999px; cursor:pointer; color:#33414f; background:#eef2f7; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:12px; padding:18px;
+            margin-top:18px; }
+    .meta { color:var(--muted); font-size:13.5px; }
+    .meta b { color: var(--ink); }
+    #chartBox { position:relative; height:420px; }
+    #network { height:480px; }
+    .hidden { display:none; }
+    .cites { margin-top:6px; }
+    details { border-top:1px solid var(--line); padding:9px 0; }
+    details summary { cursor:pointer; font-weight:600; }
+    details summary .count { color:var(--muted); font-weight:400; }
+    .cite { font-size:13px; padding:5px 0 5px 14px; border-left:2px solid var(--line); margin:6px 0; }
+    .cite a { color:var(--accent); text-decoration:none; font-family:ui-monospace,Menlo,monospace; }
+    .err { color:#b42318; background:#fef3f2; border:1px solid #fecdca; padding:12px; border-radius:8px; }
+    .pill { display:inline-block; font-size:11.5px; background:#eef2f7; border-radius:6px; padding:2px 7px;
+            margin-right:6px; color:#33414f; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>ClinicalTrials.gov Query → Visualization</h1>
+    <p class="sub">Ask a question in plain English. Charts and citations come from live ClinicalTrials.gov data.</p>
+
+    <div class="row">
+      <input id="q" type="text" placeholder="e.g. How are lung cancer trials distributed across phases?"
+             value="How has the number of trials for Pembrolizumab changed per year since 2015?" />
+      <button id="go">Visualize</button>
+    </div>
+    <div class="chips" id="chips"></div>
+
+    <div id="status" class="meta" style="margin-top:14px;"></div>
+
+    <div id="result" class="card hidden">
+      <h2 id="title" style="margin:0 0 10px; font-size:18px;"></h2>
+      <div id="metaLine" class="meta" style="margin-bottom:14px;"></div>
+      <div id="chartBox"><canvas id="chart"></canvas></div>
+      <div id="network" class="hidden"></div>
+      <div id="cites" class="cites"></div>
+      <div id="notes" class="meta" style="margin-top:14px;"></div>
+    </div>
+  </div>
+
+<script>
+const EXAMPLES = [
+  "How has the number of trials for Pembrolizumab changed per year since 2015?",
+  "How are lung cancer trials distributed across phases?",
+  "Compare phases for trials involving Pembrolizumab vs Nivolumab.",
+  "Which countries have the most recruiting trials for diabetes?",
+  "Show a network of sponsors and drugs for breast cancer trials.",
+];
+const PALETTE = ["#2563eb","#16a34a","#db2777","#d97706","#7c3aed","#0891b2","#dc2626","#4b5563"];
+
+const $ = (id) => document.getElementById(id);
+let chart = null, network = null;
+
+const chipsEl = $("chips");
+EXAMPLES.forEach(q => {
+  const c = document.createElement("span");
+  c.className = "chip"; c.textContent = q.length > 52 ? q.slice(0, 50) + "…" : q;
+  c.title = q;
+  c.onclick = () => { $("q").value = q; run(); };
+  chipsEl.appendChild(c);
+});
+
+$("go").onclick = run;
+$("q").addEventListener("keydown", (e) => { if (e.key === "Enter") run(); });
+
+function nctLink(c) {
+  return `<div class="cite"><a href="https://clinicaltrials.gov/study/${c.nct_id}" target="_blank" rel="noopener">${c.nct_id}</a> — ${escapeHtml(c.excerpt || "")}</div>`;
+}
+function escapeHtml(s){return s.replace(/[&<>]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[m]));}
+
+async function run() {
+  const query = $("q").value.trim();
+  if (!query) return;
+  $("go").disabled = true;
+  $("status").textContent = "Querying ClinicalTrials.gov…";
+  $("result").classList.add("hidden");
+  try {
+    const resp = await fetch("/query", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ query }),
+    });
+    const body = await resp.json();
+    if (!resp.ok) { showError(body); return; }
+    render(body);
+    $("status").textContent = "";
+  } catch (e) {
+    $("status").innerHTML = `<div class="err">Request failed: ${escapeHtml(String(e))}</div>`;
+  } finally {
+    $("go").disabled = false;
+  }
+}
+
+function showError(body) {
+  let msg = body.detail;
+  if (Array.isArray(msg)) msg = msg.map(d => d.msg + " (" + (d.loc||[]).join(".") + ")").join("; ");
+  $("status").innerHTML = `<div class="err">${escapeHtml(typeof msg === "string" ? msg : JSON.stringify(body))}</div>`;
+}
+
+function resetViews() {
+  if (chart) { chart.destroy(); chart = null; }
+  if (network) { network.destroy(); network = null; }
+  $("chartBox").classList.add("hidden");
+  $("network").classList.add("hidden");
+  $("cites").innerHTML = "";
+}
+
+function render(body) {
+  const viz = body.visualization, meta = body.meta;
+  resetViews();
+  $("result").classList.remove("hidden");
+  $("title").textContent = viz.title;
+  $("metaLine").innerHTML =
+    `<span class="pill">${viz.type}</span>` +
+    Object.entries(meta.filters || {}).map(([k,v]) => `<span class="pill">${k}: ${escapeHtml(String(v))}</span>`).join("") +
+    `<div style="margin-top:8px">${escapeHtml(meta.query_interpretation || "")}` +
+    ` &nbsp;·&nbsp; <b>${meta.total_trials_fetched}</b> trials analyzed</div>`;
+  $("notes").textContent = meta.notes || "";
+
+  if (viz.type === "network_graph") renderNetwork(viz);
+  else renderChart(viz);
+}
+
+function renderChart(viz) {
+  $("chartBox").classList.remove("hidden");
+  const enc = viz.encoding, data = viz.data;
+  const xField = enc.x.field, yField = (enc.y && enc.y.field) || "trial_count";
+  let datasets, labels;
+
+  if (viz.type === "grouped_bar" && enc.series) {
+    labels = [...new Set(data.map(d => d[xField]))];
+    const series = [...new Set(data.map(d => d[enc.series]))];
+    datasets = series.map((s, i) => ({
+      label: s,
+      data: labels.map(x => { const r = data.find(d => d[xField]===x && d[enc.series]===s); return r ? r[yField] : 0; }),
+      backgroundColor: PALETTE[i % PALETTE.length],
+    }));
+  } else {
+    labels = data.map(d => d[xField]);
+    datasets = [{
+      label: yField,
+      data: data.map(d => d[yField]),
+      backgroundColor: viz.type === "time_series" ? "rgba(37,99,235,.15)" : PALETTE[0],
+      borderColor: PALETTE[0], borderWidth: 2, tension: .25, fill: viz.type === "time_series",
+      pointRadius: viz.type === "time_series" ? 3 : 0,
+    }];
+  }
+  const kind = viz.type === "time_series" ? "line" : "bar";
+  chart = new Chart($("chart"), {
+    type: kind, data: { labels, datasets },
+    options: { responsive: true, maintainAspectRatio: false,
+      plugins: { legend: { display: datasets.length > 1 } },
+      scales: { y: { beginAtZero: true, title: { display: true, text: "trial_count" } },
+                x: { title: { display: true, text: xField } } } },
+  });
+  renderCitations(data, xField, enc.series);
+}
+
+function renderCitations(data, xField, seriesField) {
+  const host = $("cites");
+  host.innerHTML = "<h3 style='font-size:14px;margin:18px 0 4px'>Citations per data point</h3>";
+  data.forEach(d => {
+    const cites = d.citations || [];
+    const name = seriesField ? `${d[xField]} · ${d[seriesField]}` : d[xField];
+    const det = document.createElement("details");
+    det.innerHTML = `<summary>${escapeHtml(String(name))} — ${d.trial_count} `
+      + `<span class="count">(${cites.length} citations)</span></summary>`
+      + cites.map(nctLink).join("");
+    host.appendChild(det);
+  });
+}
+
+function renderNetwork(viz) {
+  $("network").classList.remove("hidden");
+  const g = viz.data[0] || { nodes: [], edges: [] };
+  const enc = viz.encoding;
+  const rawNodes = g[enc.nodes] || [], rawEdges = g[enc.edges] || [];
+  const nodes = rawNodes.map(n => ({
+    id: n.id, label: n.label, shape: "dot", size: n.type === "sponsor" ? 16 : 10,
+    color: n.type === "sponsor" ? "#2563eb" : "#16a34a",
+    font: { size: 12 },
+  }));
+  const edges = rawEdges.map(e => ({ from: e.source, to: e.target, value: e.weight,
+    title: `${e.weight} trial(s)` }));
+  network = new vis.Network($("network"),
+    { nodes: new vis.DataSet(nodes), edges: new vis.DataSet(edges) },
+    { physics: { stabilization: true, barnesHut: { springLength: 130 } },
+      interaction: { hover: true }, edges: { color: { color: "#c3ccd6" }, smooth: false } });
+
+  const host = $("cites");
+  host.innerHTML = "<h3 style='font-size:14px;margin:18px 0 4px'>"
+    + "<span style='color:#2563eb'>●</span> sponsor &nbsp; <span style='color:#16a34a'>●</span> drug "
+    + "&nbsp;—&nbsp; edges = trials linking them</h3>";
+  rawEdges.forEach(e => {
+    const det = document.createElement("details");
+    det.innerHTML = `<summary>${escapeHtml(e.source.replace(/^sponsor:/,''))} → `
+      + `${escapeHtml(e.target.replace(/^drug:/,''))} `
+      + `<span class="count">(weight ${e.weight}, ${(e.citations||[]).length} citations)</span></summary>`
+      + (e.citations || []).map(nctLink).join("");
+    host.appendChild(det);
+  });
+}
+</script>
+</body>
+</html>
